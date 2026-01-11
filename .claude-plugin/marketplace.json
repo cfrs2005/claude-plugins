@@ -1,0 +1,21 @@
+{
+  "name": "claude-plugins-marketplace",
+  "owner": {
+    "name": "toy",
+    "email": "noreply@example.dev"
+  },
+  "metadata": {
+    "description": "Claude Code 持久化记忆系统，基于 SQLite + FTS5",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "memory-manager",
+      "description": "SQLite-based memory persistence with full-text search",
+      "version": "1.0.0",
+      "source": "./plugins/memory-manager",
+      "category": "utilities",
+      "tags": ["memory", "sqlite", "persistence"]
+    }
+  ]
+}

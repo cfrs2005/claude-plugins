@@ -1,0 +1,11 @@
+{
+  "name": "memory-manager",
+  "version": "1.0.0",
+  "description": "SQLite-based memory persistence with FTS5 full-text search",
+  "author": {
+    "name": "toy",
+    "email": "noreply@example.dev"
+  },
+  "license": "MIT",
+  "keywords": ["memory", "sqlite", "persistence", "search"]
+}

@@ -15,7 +15,7 @@
 ## Installation
 
 ```bash
-git clone https://github.com/zhangqingyue/claude-plugins.git
+git clone https://github.com/cfrs2005/claude-plugins.git
 cd claude-plugins
 ```
 
