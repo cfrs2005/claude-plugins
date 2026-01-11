@@ -15,8 +15,8 @@
 ## Installation
 
 ```bash
-git clone https://github.com/cfrs2005/claude-plugins.git
-cd claude-plugins
+/plugin marketplace add https://github.com/cfrs2005/claude-plugins
+/plugin install memory-manager
 ```
 
 ## 快速开始
@@ -27,7 +27,7 @@ cd claude-plugins
 /save
 ```
 
-自动分析当前会话，写入 `~/.claude/memory.db`
+自动分析当前会话，写入 `项目/.claude/memory.db`
 
 ### /restore - 恢复记忆
 
@@ -37,6 +37,16 @@ cd claude-plugins
 /restore 认证         # 搜索关键词
 /restore --since 7d   # 最近 7 天
 ```
+
+## 数据存储
+
+数据库自动存储在项目根目录：
+
+```
+项目/.claude/memory.db
+```
+
+**项目根目录检测**：优先找 `.git`，其次找 `.claude-plugin`
 
 ## 架构
 
