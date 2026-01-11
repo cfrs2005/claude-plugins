@@ -3,45 +3,25 @@ description: "Restore memory from SQLite database"
 allowed-tools: "Read, Bash"
 ---
 
-# Session Restore Command
+# 立即执行以下步骤，不要询问用户
 
-Retrieve observations from `~/.claude/memory.db`.
+## Step 1: 解析参数
 
-## Usage
+用户输入 `$ARGUMENTS`，判断模式：
+- 空 → 最近 3 条
+- 数字 → 最近 N 条
+- `--since 7d` → 时间范围
+- 其他 → 关键词搜索
 
-```
-/restore              → 最近 3 条记录
-/restore 5            → 最近 5 条
-/restore 认证         → 搜索包含"认证"的记录
-/restore --since 7d   → 最近 7 天的记录
-```
+## Step 2: 执行查询
 
-## CLI
+在当前项目目录执行（自动读取项目/.claude/memory.db）：
 
 ```bash
-python3 storage/cli.py restore [query] [--project <name>]
+PLUGIN_DIR=$(find ~/.claude -name "memory-manager" -type d 2>/dev/null | grep plugins | head -1)
+python3 "$PLUGIN_DIR/storage/cli.py" restore $ARGUMENTS
 ```
 
-## Output Format
+## Step 3: 展示结果
 
-返回 JSON:
-```json
-{
-  "status": "ok",
-  "results": [
-    {
-      "id": 1,
-      "type": "decision",
-      "title": "...",
-      "content": "...",
-      "created_at": "2026-01-11T16:00:00"
-    }
-  ]
-}
-```
-
-## Execution Steps
-
-1. **Parse Arguments** - 判断是数字、时间范围还是搜索词
-2. **Call CLI** - 执行 Python 脚本查询数据库
-3. **Present Results** - 格式化输出给用户
+将 JSON 结果格式化展示给用户。

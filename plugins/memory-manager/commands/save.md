@@ -1,35 +1,37 @@
 ---
-description: "Save observation to SQLite memory database"
+description: "Save current session to SQLite memory database"
 allowed-tools: "Read, Bash, Grep, Glob"
 ---
 
-# Session Save Command
+# 立即执行以下步骤，不要询问用户
 
-Persist observations to `~/.claude/memory.db` via SQLite.
+## Step 1: 分析当前会话
 
-## Usage
+回顾本次对话中的关键内容：
+- 做了什么决策？
+- 修改了哪些文件？
+- 发现了什么问题？
+- 还有什么待办？
+
+## Step 2: 获取项目名
 
 ```bash
-python3 storage/cli.py save \
-  --project "<project-name>" \
-  --type "<decision|change|discovery|task>" \
-  --title "<short-title>" \
-  --content "<detailed-content>" \
-  --files "<comma-separated-paths>"
+basename $(git rev-parse --show-toplevel 2>/dev/null || pwd)
 ```
 
-## Observation Types
+## Step 3: 写入数据库
 
-| Type | When to Use |
-|------|-------------|
-| `decision` | 架构决策、技术选型 |
-| `change` | 代码修改、文件变更 |
-| `discovery` | 发现的问题、学到的知识 |
-| `task` | 待办事项、未完成工作 |
+找到插件目录，在**当前项目目录**执行（数据库会自动写入项目/.claude/memory.db）：
 
-## Execution Steps
+```bash
+PLUGIN_DIR=$(find ~/.claude -name "memory-manager" -type d 2>/dev/null | grep plugins | head -1)
+python3 "$PLUGIN_DIR/storage/cli.py" save \
+  --project "<项目名>" \
+  --type "<decision|change|discovery|task>" \
+  --title "<简短标题>" \
+  --content "<详细内容>"
+```
 
-1. **Identify Observation Type** - 根据当前工作判断类型
-2. **Extract Key Info** - 提取标题和核心内容
-3. **Call CLI** - 执行 Python 脚本写入数据库
-4. **Confirm Result** - 检查返回的 JSON 状态
+## Step 4: 确认结果
+
+检查返回的 JSON，向用户报告保存成功。
