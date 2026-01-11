@@ -10,11 +10,6 @@
 ### 智谱 GLM Coding (适配本插件)
 本插件完美支持智谱 GLM-4.7 模型。超值订阅，邀你一起薅羊毛！Claude Code、Cline 等 20+ 大编程工具无缝支持，"码力"全开，越拼越爽！
 
-**配置指南**:
-- **API Base URL**: `https://open.bigmodel.cn/api/anthropic`
-- **Model**: `GLM-4.7`
-- **Mode**: `code--zh` (默认)
-
 👉 [**立即开拼，享限时惊喜价！**](https://www.bigmodel.cn/glm-coding?ic=H0RNPV3LNZ)
 
 ### FoxCode 转发服务
