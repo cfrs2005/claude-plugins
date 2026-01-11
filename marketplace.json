@@ -1,0 +1,16 @@
+{
+  "name": "Claude Plugins Marketplace",
+  "description": "Memory management, skill retrieval, and session persistence for Claude Code",
+  "owner": {
+    "name": "zhangqingyue",
+    "url": "https://github.com/zhangqingyue"
+  },
+  "plugins": [
+    {
+      "name": "memory-manager",
+      "description": "Save/restore session context with complete memory system",
+      "source": "./plugins/memory-manager",
+      "version": "1.0.0"
+    }
+  ]
+}

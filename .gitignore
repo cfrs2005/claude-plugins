@@ -1,0 +1,15 @@
+# Claude Code local files
+CLAUDE.md
+**/CLAUDE.md
+.context_memory.md
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
