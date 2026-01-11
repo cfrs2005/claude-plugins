@@ -41,10 +41,10 @@ cd claude-plugins
 ## 架构
 
 ```
-~/.claude/memory.db     # SQLite 数据库
-├── sessions            # 会话元数据
-├── observations        # 原子化记忆
-└── observations_fts    # FTS5 全文索引
+项目/.claude/memory.db      # 项目级 SQLite 数据库
+├── sessions                # 会话元数据
+├── observations            # 原子化记忆
+└── observations_fts        # FTS5 全文索引
 ```
 
 ## 记忆类型

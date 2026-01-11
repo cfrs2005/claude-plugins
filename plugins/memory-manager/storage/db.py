@@ -11,14 +11,35 @@ from datetime import datetime, timedelta
 from .schema import SCHEMA
 from .models import Session, Observation
 
-DEFAULT_DB_PATH = Path.home() / ".claude" / "memory.db"
+
+def find_project_root() -> Path:
+    """向上查找项目根目录（优先 .git）"""
+    cwd = Path.cwd()
+
+    # 优先找 .git
+    for parent in [cwd] + list(cwd.parents):
+        if (parent / ".git").exists():
+            return parent
+
+    # 其次找 .claude-plugin
+    for parent in [cwd] + list(cwd.parents):
+        if (parent / ".claude-plugin").exists():
+            return parent
+
+    return cwd
+
+
+def get_default_db_path() -> Path:
+    """获取项目级数据库路径"""
+    root = find_project_root()
+    return root / ".claude" / "memory.db"
 
 
 class MemoryDB:
     """SQLite 数据库管理器"""
 
     def __init__(self, db_path: Optional[Path] = None):
-        self.db_path = db_path or DEFAULT_DB_PATH
+        self.db_path = db_path or get_default_db_path()
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._conn: Optional[sqlite3.Connection] = None
 
