@@ -1,11 +1,11 @@
 {
-  "name": "claude-plugins-marketplace",
+  "name": "toy-memory-marketplace",
   "owner": {
     "name": "toy",
     "email": "noreply@example.dev"
   },
   "metadata": {
-    "description": "Claude Code 持久化记忆系统，基于 SQLite + FTS5",
+    "description": "持久化记忆系统，基于 SQLite + FTS5",
     "version": "1.0.0"
   },
   "plugins": [
