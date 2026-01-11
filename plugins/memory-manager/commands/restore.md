@@ -15,11 +15,11 @@ allowed-tools: "Read, Bash"
 
 ## Step 2: 执行查询
 
-在当前项目目录执行（自动读取项目/.claude/memory.db）：
+找到 cli.py 路径，在当前项目目录执行：
 
 ```bash
-PLUGIN_DIR=$(find ~/.claude -name "memory-manager" -type d 2>/dev/null | grep plugins | head -1)
-python3 "$PLUGIN_DIR/storage/cli.py" restore $ARGUMENTS
+CLI_PATH=$(find ~/.claude/plugins/cache -name "cli.py" -path "*memory-manager*" 2>/dev/null | head -1)
+python3 "$CLI_PATH" restore $ARGUMENTS
 ```
 
 ## Step 3: 展示结果

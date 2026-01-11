@@ -1,6 +1,6 @@
 {
   "name": "memory-manager",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "SQLite-based memory persistence with FTS5 full-text search",
   "author": {
     "name": "toy",

@@ -6,13 +6,13 @@
   },
   "metadata": {
     "description": "持久化记忆系统，基于 SQLite + FTS5",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "plugins": [
     {
       "name": "memory-manager",
       "description": "SQLite-based memory persistence with full-text search",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "source": "./plugins/memory-manager",
       "category": "utilities",
       "tags": ["memory", "sqlite", "persistence"]

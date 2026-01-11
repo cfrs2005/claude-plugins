@@ -21,11 +21,11 @@ basename $(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
 ## Step 3: 写入数据库
 
-找到插件目录，在**当前项目目录**执行（数据库会自动写入项目/.claude/memory.db）：
+找到 cli.py 路径，在当前项目目录执行：
 
 ```bash
-PLUGIN_DIR=$(find ~/.claude -name "memory-manager" -type d 2>/dev/null | grep plugins | head -1)
-python3 "$PLUGIN_DIR/storage/cli.py" save \
+CLI_PATH=$(find ~/.claude/plugins/cache -name "cli.py" -path "*memory-manager*" 2>/dev/null | head -1)
+python3 "$CLI_PATH" save \
   --project "<项目名>" \
   --type "<decision|change|discovery|task>" \
   --title "<简短标题>" \
